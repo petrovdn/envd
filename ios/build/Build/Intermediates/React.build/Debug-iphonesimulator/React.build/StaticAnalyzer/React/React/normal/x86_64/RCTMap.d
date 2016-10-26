@@ -1,0 +1,26 @@
+dependencies: \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTMap.m \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTMap.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTConvert+MapKit.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/CSSLayout/CSSLayout.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/CSSLayout/CSSMacros.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTMapAnnotation.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTMapOverlay.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/petrovdn/envd/node_modules/react-native/React/Views/UIView+React.h

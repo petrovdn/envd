@@ -1,0 +1,35 @@
+{
+  "name": "envd",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "apsl-react-native-button": "^3.0.1",
+    "key-mirror": "^1.0.1",
+    "moment": "^2.15.1",
+    "react": "^15.3.2",
+    "react-mixin": "^3.0.5",
+    "react-native": "0.34.1",
+    "react-native-drawer": "^2.3.0",
+    "react-native-i18n": "^0.1.1",
+    "react-native-keyboard-aware-scroll-view": "^0.2.1",
+    "react-native-maps": "^0.10.2",
+    "react-native-navbar": "^1.5.4",
+    "react-native-num-textinput": "^1.0.2",
+    "react-native-router-flux": "^3.35.0",
+    "react-native-simple-store": "^1.1.0",
+    "react-native-simpledialog-android": "^1.0.8",
+    "react-native-swipe-list-view": "^0.3.0",
+    "react-native-vector-icons": "^2.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "regenerator": "^0.8.46",
+    "tcomb-form-native": "^0.6.1",
+    "undefined": "^0.1.0",
+    "underscore": "^1.8.3",
+    "validate.js": "^0.10.0"
+  }
+}
