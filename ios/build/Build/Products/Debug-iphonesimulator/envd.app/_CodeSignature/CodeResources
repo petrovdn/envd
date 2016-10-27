@@ -6,7 +6,7 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib</key>
 		<data>
-		weQymo1I+ERT6X8rm8dM8DBuby0=
+		GLB5Mg3CFqF/Ag5ji7Zkb5hxQyc=
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<data>
@@ -211,15 +211,15 @@
 		</data>
 		<key>PlugIns/envdTests.xctest/Info.plist</key>
 		<data>
-		Wd1uzP0+uYW0Q56YpJupNkX58UM=
+		f8xD7JMmfu+pnH8RdX+VfxTKxkU=
 		</data>
 		<key>PlugIns/envdTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
-		kPpZ9gSsZkxcPFCckh042r+nKiw=
+		LgAfg7bJpq1Jrrujj+Qs4z8CQ+Q=
 		</data>
 		<key>PlugIns/envdTests.xctest/envdTests</key>
 		<data>
-		JuVlq44DNDvrVWgkY1fbgq5JOds=
+		FLHdBm0STHd4FvDgSJfTZy9Vem0=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -228,11 +228,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			weQymo1I+ERT6X8rm8dM8DBuby0=
+			GLB5Mg3CFqF/Ag5ji7Zkb5hxQyc=
 			</data>
 			<key>hash2</key>
 			<data>
-			iFZkMCj08UaILzECe1FTWbG1BhPDdKIYuiNeurEyL20=
+			k/5tPKIq6EL1YCnzQmcdCrb/ZAXWdhX7sHuaaqylIlk=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
@@ -763,33 +763,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Wd1uzP0+uYW0Q56YpJupNkX58UM=
+			f8xD7JMmfu+pnH8RdX+VfxTKxkU=
 			</data>
 			<key>hash2</key>
 			<data>
-			fZnWJnNX33yfRkazOQgOYn8z9FxV4UXTTqgzvg/V8RE=
+			jrEsK8W1Zik8rq5EAcOkN/Q0VAVlEsY04QFOa24FI08=
 			</data>
 		</dict>
 		<key>PlugIns/envdTests.xctest/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kPpZ9gSsZkxcPFCckh042r+nKiw=
+			LgAfg7bJpq1Jrrujj+Qs4z8CQ+Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			AczQSgDLhQna88p/BaIQg+QO7jjX/H8keDph4EM1Ktk=
+			C4OKhBzx/XGaYGwtgBsCH6uBlmPeJ7m37fWQfnfk1EI=
 			</data>
 		</dict>
 		<key>PlugIns/envdTests.xctest/envdTests</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JuVlq44DNDvrVWgkY1fbgq5JOds=
+			FLHdBm0STHd4FvDgSJfTZy9Vem0=
 			</data>
 			<key>hash2</key>
 			<data>
-			PlkQLfTdaKrgY9XiEIM7N1rtn5NXhOhYjw8X1qYa/aI=
+			WxP1whRFMIWZ+Wqwjyi+NTgmmUtnys0kLchVthld6xM=
 			</data>
 		</dict>
 	</dict>

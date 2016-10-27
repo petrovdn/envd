@@ -1,8 +1,7 @@
 /**
- * # Login.js
+ * Register.js
  *
- *  The container to display the Login form
- *
+ * Allow user to register
  */
 'use strict'
 /**
@@ -21,10 +20,10 @@ import * as authActions from '../reducers/auth/authActions'
 /**
  *   LoginRender
  */
-import LoginRender from '../components/LoginRender'
+import LoginRender from '../components/login/LoginRender'
 
 /**
- * The necessary React components
+ * The necessary React
  */
 import React from 'react'
 
@@ -51,8 +50,8 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-function buttonPressHandler (login, username, password) {
-  login(username, password)
+function buttonPressHandler (signup, username) {
+  signup(username)
 }
 
 /**
@@ -62,29 +61,27 @@ var I18n = require('react-native-i18n')
 import Translations from '../lib/Translations'
 I18n.translations = Translations
 
-let Login = React.createClass({
+let Register = React.createClass({
 
   render () {
-    let loginButtonText = I18n.t('Login.login')
+    let loginButtonText = I18n.t('Register.register')
     let onButtonPress = buttonPressHandler.bind(null,
-                                                this.props.actions.login,
-                                                this.props.auth.form.fields.username,
-                                                this.props.auth.form.fields.password
-                                               )
+                          this.props.actions.signup,
+                this.props.auth.form.fields.username)
 
     return (
       <LoginRender
-        formType={LOGIN}
+        formType={REGISTER}
         loginButtonText={loginButtonText}
         onButtonPress={onButtonPress}
-        displayPasswordCheckbox
-        leftMessageType={REGISTER}
-        rightMessageType={FORGOT_PASSWORD}
+        displayPasswordCheckbox={false}
+        leftMessageType={FORGOT_PASSWORD}
+        rightMessageType={LOGIN}
         auth={this.props.auth}
         global={this.props.global}
       />
+
     )
   }
 })
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

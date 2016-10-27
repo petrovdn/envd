@@ -1,19 +1,6 @@
-/**
- * # authActions.js
- *
- * All the request actions have 3 variations, the request, a success
- * and a failure. They all follow the pattern that the request will
- * set the ```isFetching``` to true and the whether it's successful or
- * fails, setting it back to false.
- *
- */
+
 'use strict'
 
-/**
- * ## Imports
- *
- * The actions supported
- */
 const {
   SESSION_TOKEN_REQUEST,
   SESSION_TOKEN_SUCCESS,
@@ -46,9 +33,7 @@ const {
 
 } = require('../../lib/constants').default
 
-/**
- * Project requirements
- */
+
 const BackendFactory = require('../../lib/BackendFactory').default
 
 import {Actions} from 'react-native-router-flux'
@@ -57,11 +42,7 @@ import {appAuthToken} from '../../lib/AppAuthToken'
 
 const _ = require('underscore')
 
-/**
- * ## State actions
- * controls which form is displayed to the user
- * as in login, register, logout or reset password
- */
+// actions для переключения между окнами блока регистрации (текущее состояние).
 
 export function logoutState () {
   return {
@@ -139,7 +120,7 @@ export function logout () {
       .catch((error) => {
         dispatch(loginState())
         dispatch(logoutFailure(error))
-        Actions.Login()
+        Actions.LoginBox()
       })
   }
 }
@@ -241,14 +222,14 @@ export function getSessionToken () {
           Actions.drawer()
         } else {
           dispatch(sessionTokenRequestFailure())
-          Actions.InitialLoginForm()
+          Actions.LoginBox()
         }
       })
 
       .catch((error) => {
         dispatch(sessionTokenRequestFailure(error))
         dispatch(loginState())
-        Actions.InitialLoginForm()
+        Actions.LoginBox()
       })
   }
 }

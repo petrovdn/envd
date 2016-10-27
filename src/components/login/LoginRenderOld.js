@@ -40,7 +40,7 @@ import FormButton from '../components/FormButton'
  *  The LoginForm does the heavy lifting of displaying the fields for
  * textinput and displays the error messages
  */
-import LoginForm from '../components/LoginForm'
+import LoginForm from '../components/login/LoginForm'
 
 /**
  * The necessary React components

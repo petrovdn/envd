@@ -31,8 +31,6 @@ import Step6 from '../components/envd/Step6'
 import Step7 from '../components/envd/Step7'
 import Step8 from '../components/envd/Step8'
 
-const Button = require('apsl-react-native-button')
-
 function mapStateToProps (state) {
   return {
     envdbox: {
