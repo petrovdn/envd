@@ -1,7 +1,8 @@
 /**
- * Register.js
+ * # Login.js
  *
- * Allow user to register
+ *  The container to display the Login form
+ *
  */
 'use strict'
 /**
@@ -15,15 +16,15 @@ import { connect } from 'react-redux'
 /**
  * The actions we need
  */
-import * as authActions from '../reducers/auth/authActions'
+import * as authActions from '../../reducers/auth/authActions'
 
 /**
  *   LoginRender
  */
-import LoginRender from '../components/LoginRender'
+import LoginRender from '../../components/login/LoginRender'
 
 /**
- * The necessary React
+ * The necessary React components
  */
 import React from 'react'
 
@@ -50,8 +51,8 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-function buttonPressHandler (signup, username) {
-  signup(username)
+function buttonPressHandler (login, username, password) {
+  login(username, password)
 }
 
 /**
@@ -61,27 +62,29 @@ var I18n = require('react-native-i18n')
 import Translations from '../lib/Translations'
 I18n.translations = Translations
 
-let Register = React.createClass({
+let Login = React.createClass({
 
   render () {
-    let loginButtonText = I18n.t('Register.register')
+    let loginButtonText = I18n.t('Login.login')
     let onButtonPress = buttonPressHandler.bind(null,
-                          this.props.actions.signup,
-                this.props.auth.form.fields.username)
+                                                this.props.actions.login,
+                                                this.props.auth.form.fields.username,
+                                                this.props.auth.form.fields.password
+                                               )
 
     return (
       <LoginRender
-        formType={REGISTER}
+        formType={LOGIN}
         loginButtonText={loginButtonText}
         onButtonPress={onButtonPress}
-        displayPasswordCheckbox={false}
-        leftMessageType={FORGOT_PASSWORD}
-        rightMessageType={LOGIN}
+        displayPasswordCheckbox
+        leftMessageType={REGISTER}
+        rightMessageType={FORGOT_PASSWORD}
         auth={this.props.auth}
         global={this.props.global}
       />
-
     )
   }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

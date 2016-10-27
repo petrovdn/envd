@@ -11,7 +11,6 @@ import
 }
 from 'react-native'
 
-var MapView = require('react-native-maps')
 
 import ErrorAlert from '../../components/ErrorAlert'
 
@@ -63,14 +62,7 @@ export default class extends Component {
             <Text style={styles.textBig}>№5258 ИФНС по Ленинскому району г. Нижнего Новгорода:</Text>
           </View>
           <View>
-            <MapView
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421
-              }}
-            />
+          
           </View>
           <View>
             <Text style={styles.text}>603000, Нижний Новгород, ул. Ильинская, 52А. (831) 422-22-01</Text>
