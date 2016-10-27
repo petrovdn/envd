@@ -25,7 +25,11 @@ const {
 
 function mapStateToProps (state) {
   return {
-    auth: state.auth,
+    auth: {
+      state: state.auth.form.state,
+      username: state.auth.form.fields.username,
+      password: state.auth.form.fields.password
+    },
     global: state.global
   }
 }
@@ -39,51 +43,32 @@ function mapDispatchToProps (dispatch) {
 
 
 class LoginBox extends Component {
-  gotoRegister () { this.props.actions.registerState }
-  gotoLogin () { this.props.actions.loginState }
-  gotoFogot () { this.props.actions.forgotPasswordState }
-  gotoLogout () { this.props.actions.logoutState }
+  gotoRegister () { this.props.actions.registerState() }
+  gotoLogin () { this.props.actions.loginState() }
+  gotoFogot () { this.props.actions.forgotPasswordState() }
+  gotoLogout () { this.props.actions.logoutState() }
 
   registerPressHandler (singup, username) {
     singup(username)
   }
-  loginPressHandler (login, username, password) {
-    login(username, password)
+  onLoginPress (username, password) {
+    this.props.actions.login(username, password)
   }
+
   fogotPressHandler (resetPassword, username) {
     resetPassword(username)
   }
 
   render () {
-    let onLoginPress = this.loginPressHandler.bind(null,
-                                              this.props.actions.login,
-                                              this.props.auth.form.fields.username,
-                                              this.props.auth.form.fields.password
-                                             )
-    return (
-      <LoginRender
-        onLoginPress={onLoginPress.bind(this)}
-        gotoRegister={this.gotoRegister.bind(this)}
-        gotoFogot={this.gotoFogot.bind(this)}
-        auth={this.props.auth}
-        global={this.props.global}
-       />
-      )
-
-    switch (this.props.auth.form.state) {
+    switch (this.props.auth.state) {
       case LOGIN:
-        let onLoginPress = loginPressHandler.bind(null,
-                                                  this.props.actions.login,
-                                                  this.props.auth.form.fields.username,
-                                                  this.props.auth.form.fields.password
-                                                 )
         return (
           <LoginRender
-            onLoginPress={onLoginPress.bind(this)}
-            gotoRegister={gotoRegister.bind(this)}
-            gotoFogot={gotoFogot.bind(this)}
-            auth={this.props.auth}
-            global={this.props.global}
+            onLoginPress={this.onLoginPress.bind(this)}
+            gotoRegister={this.gotoRegister.bind(this)}
+            gotoFogot={this.gotoFogot.bind(this)}
+            username={this.props.username}
+            password={this.props.password}
            />
           )
     case REGISTER:
