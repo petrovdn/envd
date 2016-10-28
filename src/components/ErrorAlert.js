@@ -26,7 +26,7 @@ var ErrorAlert = class ErrorAlertClass {
    * determine if there is an error and how deep it is.  Take the
    * deepest level as the message and display it
    */
-  checkError (obj) {
+  checkError (obj = '') {
     let errorMessage = ''
     if (!_.isNull(obj)) {
       if (!_.isUndefined(obj.error)) {

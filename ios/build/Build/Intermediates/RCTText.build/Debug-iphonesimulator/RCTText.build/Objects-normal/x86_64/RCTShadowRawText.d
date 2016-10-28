@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTShadowRawText.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTShadowRawText.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTShadowRawText.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTShadowRawText.h \
   ../../React/Views/RCTShadowView.h ../../React/CSSLayout/CSSLayout.h \
   ../../React/CSSLayout/CSSMacros.h ../../React/Views/RCTComponent.h \
   ../../React/Base/RCTRootView.h ../../React/Base/RCTBridge.h \

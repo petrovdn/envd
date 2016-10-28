@@ -1,5 +1,4 @@
-
-import ErrorAlert from '../components/ErrorAlert'
+import ErrorAlert from '../../components/ErrorAlert'
 
 import React, {Component} from 'react'
 import
@@ -19,8 +18,7 @@ export default class extends Component {
     this.errorAlert = new ErrorAlert()
     this.state = {
       value: {
-        username: this.props.auth.form.fields.username,
-        password: this.props.auth.form.fields.password
+        username: this.props.username
       }
     }
   }
@@ -28,65 +26,64 @@ export default class extends Component {
   componentWillReceiveProps (nextprops) {
     this.setState({
       value: {
-        username: nextprops.auth.form.fields.username,
-        password: nextprops.auth.form.fields.password
+        username: nextprops.auth.form.fields.username
       }
     })
   }
 
   onChange (value) {
-    if (value.username !== '') {
-      this.props.actions.onAuthFormFieldChange('username', value.username)
-    }
-    if (value.password !== '') {
-      this.props.actions.onAuthFormFieldChange('password', value.password)
-    }
+    // if (value.username !== '') {
+    //   this.props.actions.onAuthFormFieldChange('username', value.username)
+    // }
+    // if (value.password !== '') {
+    //   this.props.actions.onAuthFormFieldChange('password', value.password)
+    // }
     this.setState(
       {value}
     )
   }
 
+  onSubmit () {
+    this.props.onFogotPress(this.state.value.username)
+  }
+
   render () {
-    let loginForm = t.struct({
-      username: t.String,
-      password: t.String
+    this.errorAlert.checkError(this.props.error)
+    let fogotForm = t.struct({
+      username: t.String
     })
     var options = {
       fields: {
         username: {
           label: 'Логин',
           maxLength: 30,
-          editable: !this.props.form.isFetching,
+  //        editable: !this.props.form.isFetching,
           placeholder: 'Только почта или телефон'
-        },
-        password: {
-          label: 'Пароль',
-          maxLength: 12,
-          secureTextEntry: true,
-          editable: !this.props.form.isFetching
         }
       }
     }
 
     return (
-      <View>
+      <View style={{marginTop: 150}}>
         <View>
+          <Text>Форма восстановления пароля</Text>
           <Form ref='form'
-            type={loginForm}
+            type={fogotForm}
             options={options}
-            value={this.props.value}
-            onChange={this.props.onChange}
-        />
+            value={this.state.value}
+            onChange={this.onChange.bind(this)}
+            />
         </View>
-        <TouchableHighlight onPress={this.props.onLoginPress()} underlayColor='#99d9f4'>
-          <Text>Логин</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.gotoRegister()} underlayColor='#99d9f4'>
-          <Text>Зарегистрироваться</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this.props.gotoFogot()} underlayColor='#99d9f4'>
+        <TouchableHighlight onPress={() => this.onSubmit()} underlayColor='#99d9f4'>
           <Text>Восстановить пароль</Text>
         </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.gotoLogin} underlayColor='#99d9f4'>
+          <Text>Войти</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.gotoRegister} underlayColor='#99d9f4'>
+          <Text>Зарегистрироваться</Text>
+        </TouchableHighlight>
+
       </View>
     )
   }

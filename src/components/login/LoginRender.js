@@ -26,12 +26,12 @@ export default class extends Component {
   }
 
   componentWillReceiveProps (nextprops) {
-    // this.setState({
-    //   value: {
-    //     username: nextprops.auth.form.fields.username,
-    //     password: nextprops.auth.form.fields.password
-    //   }
-    // })
+    this.setState({
+      value: {
+        username: nextprops.username,
+        password: nextprops.password
+      }
+    })
   }
 
   onChange (value) {
@@ -51,6 +51,7 @@ export default class extends Component {
   }
 
   render () {
+    this.errorAlert.checkError(this.props.error)
     let loginForm = t.struct({
       username: t.String,
       password: t.String
@@ -75,6 +76,7 @@ export default class extends Component {
     return (
       <View style={{marginTop: 150}}>
         <View>
+          <Text>Форма логина</Text>
           <Form ref='form'
             type={loginForm}
             options={options}

@@ -1,7 +1,7 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTText.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTText.h \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTShadowText.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTText.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTText.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTShadowText.h \
   ../../React/Views/RCTShadowView.h ../../React/CSSLayout/CSSLayout.h \
   ../../React/CSSLayout/CSSMacros.h ../../React/Views/RCTComponent.h \
   ../../React/Base/RCTRootView.h ../../React/Base/RCTBridge.h \

@@ -138,9 +138,10 @@ export function onAuthFormFieldChange (field, value) {
 /**
  * ## Signup actions
  */
-export function signupRequest () {
+export function signupRequest (username) {
   return {
-    type: SIGNUP_REQUEST
+    type: SIGNUP_REQUEST,
+    payload: username
   }
 }
 export function signupSuccess (json) {
@@ -253,7 +254,7 @@ export function saveSessionToken (json) {
  */
 export function signup (username) {
   return dispatch => {
-    dispatch(signupRequest())
+    dispatch(signupRequest(username))
     return BackendFactory().signup({
       login: username
     })
@@ -270,9 +271,13 @@ export function signup (username) {
 /**
  * ## Login actions
  */
-export function loginRequest () {
+export function loginRequest (username, password) {
   return {
-    type: LOGIN_REQUEST
+    type: LOGIN_REQUEST,
+    payload: {
+      username,
+      password
+    }
   }
 }
 
@@ -303,7 +308,7 @@ export function loginFailure (error) {
 
 export function login (username = '', password = '') {
   return dispatch => {
-    dispatch(loginRequest())
+    dispatch(loginRequest(username, password))
     return BackendFactory().login({
       login: username,
       password: password
@@ -329,7 +334,8 @@ export function login (username = '', password = '') {
 //  */
 // export function resetPasswordRequest () {
 //   return {
-//     type: RESET_PASSWORD_REQUEST
+//     type: RESET_PASSWORD_REQUEST,
+//     payload: username
 //   }
 // }
 //
@@ -359,7 +365,7 @@ export function login (username = '', password = '') {
  */
 // export function resetPassword (username) {
 //   return dispatch => {
-//     dispatch(resetPasswordRequest())
+//     dispatch(resetPasswordRequest(username))
 //     return BackendFactory().resetPassword({
 //       username: username
 //     })
