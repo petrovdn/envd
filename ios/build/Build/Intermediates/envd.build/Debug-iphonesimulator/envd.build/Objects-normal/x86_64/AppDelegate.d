@@ -1,5 +1,5 @@
-dependencies: /Users/petrovdn/envd/ios/envd/AppDelegate.m \
-  /Users/petrovdn/envd/ios/envd/AppDelegate.h \
+dependencies: /Users/petrov/envd/ios/envd/AppDelegate.m \
+  /Users/petrov/envd/ios/envd/AppDelegate.h \
   ../node_modules/react-native/React/Base/RCTBundleURLProvider.h \
   ../node_modules/react-native/React/Base/RCTRootView.h \
   ../node_modules/react-native/React/Base/RCTBridge.h \

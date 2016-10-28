@@ -64,12 +64,22 @@ export default function authReducer (state = initialState, action) {
      * ### Requests start
      * set the form to fetching and clear any errors
      */
-    case SESSION_TOKEN_REQUEST:
-    case SIGNUP_REQUEST:
-    case LOGOUT_REQUEST:
     case LOGIN_REQUEST:
+      let nextState = state.setIn(['form', 'fields', 'password'], action.payload.password)
+                            .setIn(['form', 'fields', 'username'], action.payload.username)
+                            .setIn(['form', 'isFetching'], true)
+                            .setIn(['form', 'error'], null)
+      return nextState
+
+    case SIGNUP_REQUEST:
     case RESET_PASSWORD_REQUEST:
-      let nextState = state.setIn(['form', 'isFetching'], true)
+      nextState = state.setIn(['form', 'fields', 'username'], action.payload.username)
+                          .setIn(['form', 'isFetching'], true)
+                          .setIn(['form', 'error'], null)
+      return nextState
+    case LOGOUT_REQUEST:
+    case SESSION_TOKEN_REQUEST:
+      nextState = state.setIn(['form', 'isFetching'], true)
       .setIn(['form', 'error'], null)
       return nextState
 

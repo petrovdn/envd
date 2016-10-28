@@ -50,12 +50,17 @@ export class Hapi extends Backend {
    * if error, {code: xxx, error: 'message'}
    */
   async signup (data) {
+    console.log('Запрос на регистрацию, боди:')
+    console.log(data)
     return await this._fetch({
       method: 'POST',
       url: '/register',
       body: data
     })
       .then((res) => {
+        console.log('Запрос на регистрацию, ответ:')
+        console.log(res)
+        console.log(res.json)
         if (res.status === 200 || res.status === 201) {
           return res.json
         } else {
@@ -63,6 +68,8 @@ export class Hapi extends Backend {
         }
       })
       .catch((error) => {
+        console.log('Запрос на регистрацию, ошибка:')
+        console.log(error)
         throw (error)
       })
   }

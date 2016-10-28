@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Network/RCTDataRequestHandler.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Network/RCTDataRequestHandler.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Network/RCTDataRequestHandler.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Network/RCTDataRequestHandler.h \
   ../../React/Base/RCTURLRequestHandler.h \
   ../../React/Base/RCTBridgeModule.h ../../React/Base/RCTDefines.h \
   ../../React/Base/RCTURLRequestDelegate.h \

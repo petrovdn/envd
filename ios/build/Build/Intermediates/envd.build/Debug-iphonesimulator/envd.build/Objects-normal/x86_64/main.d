@@ -1,2 +1,2 @@
-dependencies: /Users/petrovdn/envd/ios/envd/main.m \
-  /Users/petrovdn/envd/ios/envd/AppDelegate.h
+dependencies: /Users/petrov/envd/ios/envd/main.m \
+  /Users/petrov/envd/ios/envd/AppDelegate.h

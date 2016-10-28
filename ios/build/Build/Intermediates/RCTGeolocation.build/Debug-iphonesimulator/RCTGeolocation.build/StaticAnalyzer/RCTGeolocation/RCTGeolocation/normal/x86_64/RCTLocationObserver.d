@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Geolocation/RCTLocationObserver.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Geolocation/RCTLocationObserver.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Geolocation/RCTLocationObserver.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Geolocation/RCTLocationObserver.h \
   ../../React/Modules/RCTEventEmitter.h ../../React/Base/RCTBridge.h \
   ../../React/Base/RCTBridgeDelegate.h \
   ../../React/Base/RCTJavaScriptLoader.h \

@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTActivityIndicatorView.m \
-  /Users/petrovdn/envd/node_modules/react-native/React/Views/RCTActivityIndicatorView.h
+  /Users/petrov/envd/node_modules/react-native/React/Views/RCTActivityIndicatorView.m \
+  /Users/petrov/envd/node_modules/react-native/React/Views/RCTActivityIndicatorView.h

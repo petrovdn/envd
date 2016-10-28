@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Settings/RCTSettingsManager.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Settings/RCTSettingsManager.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Settings/RCTSettingsManager.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Settings/RCTSettingsManager.h \
   ../../React/Base/RCTBridgeModule.h ../../React/Base/RCTDefines.h \
   ../../React/Base/RCTBridge.h ../../React/Base/RCTBridgeDelegate.h \
   ../../React/Base/RCTJavaScriptLoader.h \

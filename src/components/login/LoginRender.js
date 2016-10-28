@@ -19,19 +19,19 @@ export default class extends Component {
     this.errorAlert = new ErrorAlert()
     this.state = {
       value: {
-        username: this.props.auth.form.fields.username,
-        password: this.props.auth.form.fields.password
+        username: this.props.username,
+        password: this.props.password
       }
     }
   }
 
   componentWillReceiveProps (nextprops) {
-    // this.setState({
-    //   value: {
-    //     username: nextprops.auth.form.fields.username,
-    //     password: nextprops.auth.form.fields.password
-    //   }
-    // })
+    this.setState({
+      value: {
+        username: nextprops.username,
+        password: nextprops.password
+      }
+    })
   }
 
   onChange (value) {
@@ -46,7 +46,12 @@ export default class extends Component {
     )
   }
 
+  onSubmit () {
+    this.props.onLoginPress(this.state.value.username, this.state.value.password)
+  }
+
   render () {
+    this.errorAlert.checkError(this.props.error)
     let loginForm = t.struct({
       username: t.String,
       password: t.String
@@ -63,7 +68,7 @@ export default class extends Component {
           label: 'Пароль',
           maxLength: 12,
           secureTextEntry: true
-  //        editable: !this.props.form.isFetching
+    //      editable: !this.props.form.isFetching
         }
       }
     }
@@ -71,14 +76,15 @@ export default class extends Component {
     return (
       <View style={{marginTop: 150}}>
         <View>
+          <Text>Форма логина</Text>
           <Form ref='form'
             type={loginForm}
             options={options}
-            value={this.value}
-            //onChange={this.onChange.bind(this)}
+            value={this.state.value}
+            onChange={this.onChange.bind(this)}
             />
         </View>
-        <TouchableHighlight onPress={this.props.onLoginPress} underlayColor='#99d9f4'>
+        <TouchableHighlight onPress={() => this.onSubmit()} underlayColor='#99d9f4'>
           <Text>Логин</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={this.props.gotoRegister} underlayColor='#99d9f4'>
