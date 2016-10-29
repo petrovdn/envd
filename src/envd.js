@@ -22,6 +22,7 @@ import App from './containers/App'
 import LoginBox from './containers/LoginBox'
 import Logout from './containers/Logout'
 import Profile from './containers/Profile'
+import UserProfileBox from './containers/UserProfileBox'
 import EnvdBox from './containers/EnvdBox'
 import MyDrawer from './lib/MyDrawer'
 
@@ -64,7 +65,8 @@ class envd extends Component {
         <Router>
           <Scene key='root'>
             <Scene key='App' component={App} type='replace' />
-            <Scene key='LoginBox' component={LoginBox} initial />
+            <Scene key='UserProfileBox' component={UserProfileBox} initial />
+            <Scene key='LoginBox' component={LoginBox} />
           </Scene>
         </Router>
       </Provider>

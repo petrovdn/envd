@@ -1,36 +1,22 @@
+'use strict'
 
-//import React, {Component} from 'react'
+import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import * as profileActions from '../reducers/profile/profileActions'
+import * as profileActions from '../../reducers/profile/profileActions'
 
-//import EditProfile from '../components/UserProfile/EditProfile'
-import Main from '../components/UserProfile/Main'
-//import Main1 from '../components/UserProfile/Main1'
-import MyScene from '../components/UserProfile/MyProfile'
-//
-// const {
-//   EDITPROFILE,
-//   MYPROFILE,
-//   NOPROFILE
-// } = require('../lib/constants').default
+//import EditProfile from '../../components/UserProfile/EditProfile'
+//import MyProfile from '../UserProfile/MyProfile'
+//import NoProfile from 'NoProfile'
 
-function mapStateToProps (state) {
-  return {
-    token: state.global.currentUser,
-    userInfo: state.profile.userInfo,
-    state: state.profile.state
-  }
-}
+const {
+  EDITPROFILE,
+  MYPROFILE,
+  NOPROFILE
+} = require('../../lib/constants').default
 
-function mapDispatchToProps (dispatch) {
-  return {
-    actions: bindActionCreators(profileActions, dispatch)
-  }
-}
-
- // class UserProfileBox extends Component {
+class Main extends Component {
   // gotoRegister () { this.props.actions.registerState() }
   // gotoLogin () { this.props.actions.loginState() }
   // gotoFogot () { this.props.actions.forgotPasswordState() }
@@ -51,19 +37,13 @@ function mapDispatchToProps (dispatch) {
   //   this.props.actions.logout()
   // }
 
-  // render () {
-  //   switch (this.props.auth.state) {
-  //     case EDITPROFILE:
-  //       return (
-  //         <EditProfile
-  //           onLoginPress={this.onLoginPress.bind(this)}
-  //           gotoRegister={this.gotoRegister.bind(this)}
-  //           gotoFogot={this.gotoFogot.bind(this)}
-  //           username={this.props.username}
-  //           password={this.props.password}
-  //           error={this.props.auth.error}
-  //          />
-  //         )
+  render () {
+    switch (this.props.state) {
+      case EDITPROFILE:
+        return (
+          <EditProfile
+           />
+          )
       // case REGISTER:
       //   return (
       //     <RegisterRender
@@ -91,9 +71,6 @@ function mapDispatchToProps (dispatch) {
       //       error={this.props.auth.error}
       //      />
       //     )
-//     }
-//   }
-// }
-
-const UserProfile = connect(mapStateToProps, mapDispatchToProps)(Main)
-export default UserProfile
+    }
+  }
+}
