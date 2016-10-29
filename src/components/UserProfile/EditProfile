@@ -1,0 +1,109 @@
+import ErrorAlert from '../../components/ErrorAlert'
+
+import React, {Component} from 'react'
+import
+{
+  Text,
+  TouchableHighlight,
+  View,
+  TextInput
+}
+from 'react-native'
+import { Field, reduxForm, initialize } from 'redux-form'
+import { connect } from 'redux'
+
+
+class renderMainField extends React.Component {
+  render () {
+    console.log(this.props.field.meta.touched)
+    console.log(this.props.field.meta.error)
+    const { input: { value, onChange } } = this.props
+    return (
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>{this.props.field.label}</Text>
+        <TextInput
+          style={styles.formInput}
+          onChangeText={(value) => onChange(value)}
+          value={value} underlineColorAndroid='transparent' selectTextOnFocus {...this.props}
+        />
+        <Text style={styles.textDanger}>{this.props.field.label}</Text>
+      </View>
+    )
+  }
+}
+
+// const t = require('tcomb-form-native')
+// let Form = t.form.Form
+
+class EditProfile extends Component {
+
+  constructor (props) {
+    super(props)
+    this.errorAlert = new ErrorAlert()
+    this.handleInitialize = this.handleInitialize.bind(this)
+  }
+
+  componentDidMount () {
+    this.handleInitialize()
+  }
+
+  handleInitialize () {
+    const initData = {
+      'fullname': this.props.userInfo.fullname,
+      'birthdate': this.birthdate,
+      'passport_series': this.passport_series,
+      'passport_number': this.passport_number,
+      'passport_issued_by': this.passport_issued_by,
+      'passport_issued_date': this.passport_issued_date,
+      'email': this.email,
+      'phone': this.phone
+    }
+    console.log(initData)
+    initialize(initData)
+  }
+
+  render () {
+    this.errorAlert.checkError(this.props.error)
+    return (
+      <View style={styles.container}>
+        <View>
+          <Text>Мой профиль</Text>
+          <form onSubmit={this._handleSubmit.bind(this)}>
+            <Field
+              defaultValue={this.props.userInfo.fullname}
+              id='fullname'
+              name='fullname'
+              ref = {(input) => this.fullname = input}
+              lable='Фамилия Имя отчество'
+              component={renderMainField}
+              />
+          </form>
+        </View>
+      </View>
+    )
+  }
+
+  _handleSubmit (event) {
+    event.preventDefault()
+    console.log(this)
+    var data = {
+      fullname: this.fullname.value,
+      birthdate: this.birthdate.value,
+      passport_series: this.passport_series.value,
+      passport_number: this.passport_number.value,
+      passport_issued_by: this.passport_issued_by.value,
+      passport_issued_date: this.passport_issued_date.value,
+      email: this.email.value,
+      phone: this.phone.value
+    }
+  //  this.props.updateProfile(this.props.token, data)
+  }
+}
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center'
+  }
+
+})
