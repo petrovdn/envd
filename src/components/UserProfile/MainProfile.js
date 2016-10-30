@@ -17,7 +17,7 @@ const {
   NOPROFILE
 } = require('../../lib/constants').default
 
-export default class Main extends Component {
+export default class MainProfile extends Component {
   // gotoRegister () { this.props.actions.registerState() }
   // gotoLogin () { this.props.actions.loginState() }
   // gotoFogot () { this.props.actions.forgotPasswordState() }

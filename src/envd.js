@@ -64,9 +64,17 @@ class envd extends Component {
       <Provider store={store}>
         <Router>
           <Scene key='root'>
-            <Scene key='App' component={App} type='replace' />
-            <Scene key='UserProfileBox' component={UserProfileBox} initial />
-            <Scene key='LoginBox' component={LoginBox} />
+            <Scene key='App' component={App} type='replace' hideNavBar initial />
+            <Scene key='UserProfileBox' component={UserProfileBox} />
+            <Scene key='LoginBox' type='replace' component={LoginBox} hideNavBar />
+            <Scene key='drawer' component={MyDrawer} open={false} >
+              <Scene key='Tabbar' tabs >
+                <Scene key='EnvdBox' component={EnvdBox} hideNavBar
+                  titleStyle={{ color: 'white' }} />
+                <Scene key='Profile' component={Profile} sceneStyle={{marginTop: 50}} />
+                <Scene key='Logout'component={Logout} sceneStyle={{marginTop: 50}} />
+              </Scene>
+            </Scene>
           </Scene>
         </Router>
       </Provider>

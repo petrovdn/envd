@@ -6,71 +6,71 @@ import
 {
   Text,
   TouchableHighlight,
-  View
+  View,
+  TextInput,
+  StyleSheet
 }
 from 'react-native'
 
-const t = require('tcomb-form-native')
-let Form = t.form.Form
+import { Field, reduxForm, initialize } from 'redux-form'
 
-export default class extends Component {
+class inputLogin extends React.Component {
+  render () {
+    const { lable, input: { value, onChange }, meta: { touched, error }, ...otherProps } = this.props
+    return (
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>{lable}</Text>
+        <TextInput
+          style={styles.formInput}
+          onChangeText={(value) => onChange(value)}
+          value={value}
+          underlineColorAndroid='transparent'
+          selectTextOnFocus
+          {...otherProps}
+        />
+        {touched && error && <Text style={styles.textDanger}>{error}</Text>}
+      </View>
+    )
+  }
+}
+class RegisterRender extends Component {
+
   constructor (props) {
     super(props)
     this.errorAlert = new ErrorAlert()
-    this.state = {
-      value: {
-        username: this.props.username
-      }
-    }
+    this.handleInitialize = this.handleInitialize.bind(this)
   }
 
-  // componentWillReceiveProps (nextprops) {
-  //   this.setState({
-  //     value: {
-  //       username: nextprops.auth.form.fields.username
-  //     }
-  //   })
-  // }
-
-  onChange (value) {
-    if (value.username !== '') {
-      this.props.actions.onAuthFormFieldChange('username', value.username)
-    }
-    this.setState(
-      {value}
-    )
+  componentDidMount () {
+    this.handleInitialize()
   }
 
   onSubmit () {
-    this.props.onRegisterPress(this.state.value.username)
+    this.props.onRegisterPress(this.login.value)
+  }
+
+  handleInitialize () {
+    const initData = {
+      'login': this.props.login
+    }
+    initialize(initData)
   }
 
   render () {
     this.errorAlert.checkError(this.props.error)
 
-    let registerForm = t.struct({
-      username: t.String
-    })
-    var options = {
-      fields: {
-        username: {
-          label: 'Логин',
-          maxLength: 30,
-  //        editable: !this.props.form.isFetching,
-          placeholder: 'Только почта или телефон'
-        }
-      }
-    }
-
     return (
       <View style={{marginTop: 150}}>
         <View>
           <Text>Форма регистрации</Text>
-          <Form ref='form'
-            type={registerForm}
-            options={options}
-            value={this.state.value}
-            onChange={this.onChange.bind(this)}
+          <Field
+            defaultValue={this.props.username}
+            id='login'
+            name='login'
+            ref={(input) => (this.login = input)}
+            lable='Логин'
+            placeholder='Только почта или телефон'
+            component={inputLogin}
             />
         </View>
         <TouchableHighlight onPress={() => this.onSubmit()} underlayColor='#99d9f4'>
@@ -82,8 +82,47 @@ export default class extends Component {
         <TouchableHighlight onPress={this.props.gotoFogot} underlayColor='#99d9f4'>
           <Text>Восстановить пароль</Text>
         </TouchableHighlight>
-
       </View>
     )
   }
 }
+function validate (formProps) {
+  const errors = {}
+  if (!formProps.login) {
+    errors.login = 'не может быть пустым'
+  }
+  return errors
+}
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  formInput: {
+    padding: 10,
+    height: 40,
+    borderRadius: 8,
+    borderWidth: 1
+  },
+  formLabel: {
+    fontSize: 16
+  },
+  textDanger: {
+    fontSize: 10,
+    color: 'red'
+  },
+  submitButton: {
+    height: 40,
+    borderRadius: 8,
+    borderWidth: 1,
+    backgroundColor: 'grey'
+  }
+})
+
+const form = reduxForm({
+  form: 'RegisterRender',
+  validate,
+  touchOnChange: true
+})
+export default form(RegisterRender)
