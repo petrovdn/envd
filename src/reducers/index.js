@@ -18,6 +18,7 @@ import taskbox from './taskbox/taskboxReducer'
 import envdbox from './envdbox/envdboxReducer'
 
 import { combineReducers } from 'redux'
+import { reducer as formProfileReducer } from 'redux-form'
 
 /**
  * ## CombineReducers
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
   global,
   profile,
   taskbox,
-  envdbox
+  envdbox,
+  form: formProfileReducer
 })
 
 export default rootReducer

@@ -6,82 +6,101 @@ import
 {
   Text,
   TouchableHighlight,
-  View
+  View,
+  TextInput,
+  StyleSheet
 }
 from 'react-native'
 
-const t = require('tcomb-form-native')
-let Form = t.form.Form
+import { Field, reduxForm, initialize } from 'redux-form'
 
-export default class extends Component {
+class inputLogin extends React.Component {
+  render () {
+    const { lable, input: { value, onChange }, meta: { touched, error }, ...otherProps } = this.props
+    return (
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>{lable}</Text>
+        <TextInput
+          style={styles.formInput}
+          onChangeText={(value) => onChange(value)}
+          value={value}
+          underlineColorAndroid='transparent'
+          selectTextOnFocus
+          {...otherProps}
+        />
+        {touched && error && <Text style={styles.textDanger}>{error}</Text>}
+      </View>
+    )
+  }
+}
+
+class inputPassword extends React.Component {
+  render () {
+    const { lable, input: { value, onChange }, meta: { touched, error }, ...otherProps } = this.props
+    return (
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>{lable}</Text>
+        <TextInput
+          style={styles.formInput}
+          onChangeText={(value) => onChange(value)}
+          value={value}
+          underlineColorAndroid='transparent'
+          selectTextOnFocus
+          {...otherProps}
+        />
+        {touched && error && <Text style={styles.textDanger}>{error}</Text>}
+      </View>
+    )
+  }
+}
+
+class LoginRender extends Component {
+
   constructor (props) {
     super(props)
     this.errorAlert = new ErrorAlert()
-    this.state = {
-      value: {
-        username: this.props.username,
-        password: this.props.password
-      }
-    }
+    this.handleInitialize = this.handleInitialize.bind(this)
   }
 
-  componentWillReceiveProps (nextprops) {
-    this.setState({
-      value: {
-        username: nextprops.username,
-        password: nextprops.password
-      }
-    })
-  }
-
-  onChange (value) {
-    // if (value.username !== '') {
-    //   this.props.actions.onAuthFormFieldChange('username', value.username)
-    // }
-    // if (value.password !== '') {
-    //   this.props.actions.onAuthFormFieldChange('password', value.password)
-    // }
-    this.setState(
-      {value}
-    )
+  componentDidMount () {
+    this.handleInitialize()
   }
 
   onSubmit () {
-    this.props.onLoginPress(this.state.value.username, this.state.value.password)
+    this.props.onLoginPress(this.login.value, this.password.value)
+  }
+
+  handleInitialize () {
+    const initData = {
+      'login': this.props.login,
+      'password': this.props.password
+    }
+    initialize(initData)
   }
 
   render () {
     this.errorAlert.checkError(this.props.error)
-    let loginForm = t.struct({
-      username: t.String,
-      password: t.String
-    })
-    var options = {
-      fields: {
-        username: {
-          label: 'Логин',
-          maxLength: 30,
-  //        editable: !this.props.form.isFetching,
-          placeholder: 'Только почта или телефон'
-        },
-        password: {
-          label: 'Пароль',
-          maxLength: 12,
-          secureTextEntry: true
-    //      editable: !this.props.form.isFetching
-        }
-      }
-    }
-
     return (
       <View style={{marginTop: 150}}>
         <View>
           <Text>Форма логина</Text>
-          <Form ref='form'
-            type={loginForm}
-            options={options}
-            value={this.state.value}
-            onChange={this.onChange.bind(this)}
+          <Field
+            defaultValue={this.props.username}
+            id='login'
+            name='login'
+            ref={(input) => (this.login = input)}
+            lable='Логин'
+            placeholder='Только почта или телефон'
+            component={inputLogin}
+            />
+          <Field
+            defaultValue={this.props.password}
+            id='password'
+            name='password'
+            ref={(input) => (this.password = input)}
+            lable='Пароль'
+            component={inputPassword}
+            secureTextEntry
             />
         </View>
         <TouchableHighlight onPress={() => this.onSubmit()} underlayColor='#99d9f4'>
@@ -98,3 +117,44 @@ export default class extends Component {
     )
   }
 }
+
+function validate (formProps) {
+  const errors = {}
+  if (!formProps.login) {
+    errors.login = 'не может быть пустым'
+  }
+  return errors
+}
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  formInput: {
+    padding: 10,
+    height: 40,
+    borderRadius: 8,
+    borderWidth: 1
+  },
+  formLabel: {
+    fontSize: 16
+  },
+  textDanger: {
+    fontSize: 10,
+    color: 'red'
+  },
+  submitButton: {
+    height: 40,
+    borderRadius: 8,
+    borderWidth: 1,
+    backgroundColor: 'grey'
+  }
+})
+
+const form = reduxForm({
+  form: 'LoginRender',
+  validate,
+  touchOnChange: true
+})
+export default form(LoginRender)
