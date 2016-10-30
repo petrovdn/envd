@@ -16,6 +16,7 @@ import { Field, reduxForm, initialize } from 'redux-form'
 
 class inputLogin extends React.Component {
   render () {
+    this.errorAlert.checkError(this.props.error)
     const { lable, input: { value, onChange }, meta: { touched, error }, ...otherProps } = this.props
     return (
       <View style={styles.formGroup}>
