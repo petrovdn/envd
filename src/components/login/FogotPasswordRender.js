@@ -57,7 +57,6 @@ class FogotPasswordRender extends Component {
 
   render () {
     this.errorAlert.checkError(this.props.error)
-
     return (
       <View style={{marginTop: 150}}>
         <View>

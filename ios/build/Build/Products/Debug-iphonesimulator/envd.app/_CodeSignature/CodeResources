@@ -13,6 +13,10 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Default-568h@2x.png</key>
+		<data>
+		poDYGy1JWXBgPH3/wCEBNbVTOks=
+		</data>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<data>
 		nrRG7weUQrYVE+0w3BdYNpbMByg=
@@ -208,7 +212,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		zuCs53FPruWvmdqYJApm6FsSZdA=
+		hAjXm2LRyhrESce/+kE+IczFyQ8=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -241,6 +245,17 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>Default-568h@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			poDYGy1JWXBgPH3/wCEBNbVTOks=
+			</data>
+			<key>hash2</key>
+			<data>
+			UdHegDh1HZlDpSEYtzMl4sjA9q8uvK4K9OL0sRTFD6M=
+			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<dict>
