@@ -8,10 +8,10 @@ import MainLogin from '../components/login/MainLogin'
 function mapStateToProps (state) {
   return {
     auth: {
-      state: state.auth.form.state,
-      username: state.auth.form.fields.username,
-      password: state.auth.form.fields.password,
-      error: state.auth.form.error
+      state: state.auth.formIm.state,
+      username: state.auth.formIm.fields.username,
+      password: state.auth.formIm.fields.password,
+      error: state.auth.formIm.error
     },
     global: state.global
   }

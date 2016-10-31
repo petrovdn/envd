@@ -9,7 +9,7 @@
  * ## Async support
  *
  */
-require('regenerator/runtime')
+require('regenerator-runtime/runtime')
 
 export default class Backend {
   /**
@@ -103,4 +103,3 @@ export default class Backend {
   }
 
 }
-

@@ -22,6 +22,6 @@ const Form = Record({
 })
 
 var InitialState = Record({
-  form: new Form()
+  formIm: new Form()
 })
 export default InitialState

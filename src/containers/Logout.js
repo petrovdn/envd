@@ -56,8 +56,8 @@ function mapStateToProps (state) {
   return {
     auth: {
       form: {
-        isFetching: state.auth.form.isFetching,
-        isValid: state.auth.form.isValid
+        isFetching: state.auth.formIm.isFetching,
+        isValid: state.auth.formIm.isValid
       }
     },
     global: {

@@ -49,22 +49,22 @@ export default function authReducer (state = initialState, action) {
      * set the form to fetching and clear any errors
      */
     case LOGIN_REQUEST:
-      let nextState = state.setIn(['form', 'fields', 'password'], action.payload.password)
-                            .setIn(['form', 'fields', 'username'], action.payload.username)
-                            .setIn(['form', 'isFetching'], true)
-                            .setIn(['form', 'error'], null)
+      let nextState = state.setIn(['formIm', 'fields', 'password'], action.payload.password)
+                            .setIn(['formIm', 'fields', 'username'], action.payload.username)
+                            .setIn(['formIm', 'isFetching'], true)
+                            .setIn(['formIm', 'error'], null)
       return nextState
 
     case SIGNUP_REQUEST:
     case RESET_PASSWORD_REQUEST:
-      nextState = state.setIn(['form', 'fields', 'username'], action.payload.username)
-                          .setIn(['form', 'isFetching'], true)
-                          .setIn(['form', 'error'], null)
+      nextState = state.setIn(['formIm', 'fields', 'username'], action.payload.username)
+                          .setIn(['formIm', 'isFetching'], true)
+                          .setIn(['formIm', 'error'], null)
       return nextState
     case LOGOUT_REQUEST:
     case SESSION_TOKEN_REQUEST:
-      nextState = state.setIn(['form', 'isFetching'], true)
-      .setIn(['form', 'error'], null)
+      nextState = state.setIn(['formIm', 'isFetching'], true)
+      .setIn(['formIm', 'error'], null)
       return nextState
 
     /**
@@ -74,8 +74,8 @@ export default function authReducer (state = initialState, action) {
      */
     case LOGOUT:
       return formValidation(
-      state.setIn(['form', 'state'], action.type)
-        .setIn(['form', 'error'], null)
+      state.setIn(['formIm', 'state'], action.type)
+        .setIn(['formIm', 'error'], null)
     )
 
     /**
@@ -89,8 +89,8 @@ export default function authReducer (state = initialState, action) {
     case REGISTER:
     case FORGOT_PASSWORD:
       return formValidation(
-      state.setIn(['form', 'state'], action.type)
-        .setIn(['form', 'error'], null)
+      state.setIn(['formIm', 'state'], action.type)
+        .setIn(['formIm', 'error'], null)
     )
 
     /**
@@ -103,8 +103,8 @@ export default function authReducer (state = initialState, action) {
      */
     case ON_AUTH_FORM_FIELD_CHANGE: {
       const {field, value} = action.payload
-      let nextState = state.setIn(['form', 'fields', field], value)
-          .setIn(['form', 'error'], null)
+      let nextState = state.setIn(['formIm', 'fields', field], value)
+          .setIn(['formIm', 'error'], null)
 
       return formValidation(
       fieldValidation(nextState, action)
@@ -119,7 +119,7 @@ export default function authReducer (state = initialState, action) {
     case LOGIN_SUCCESS:
     case LOGOUT_SUCCESS:
     case RESET_PASSWORD_SUCCESS:
-      return state.setIn(['form', 'isFetching'], false)
+      return state.setIn(['formIm', 'isFetching'], false)
     /**
      * ### Request good
      * Set the fetching flag so the forms will be enabled
@@ -128,10 +128,10 @@ export default function authReducer (state = initialState, action) {
 
     case SIGNUP_SUCCESS:
       return formValidation(
-      state.setIn(['form', 'state'], 'LOGIN')
-        .setIn(['form', 'error'], null)
-        .setIn(['form', 'fields', 'password'], action.payload.password)
-        .setIn(['form', 'isFetching'], false)
+      state.setIn(['formIm', 'state'], 'LOGIN')
+        .setIn(['formIm', 'error'], null)
+        .setIn(['formIm', 'fields', 'password'], action.payload.password)
+        .setIn(['formIm', 'isFetching'], false)
       )
 
     /**
@@ -143,8 +143,8 @@ export default function authReducer (state = initialState, action) {
     case LOGOUT_FAILURE:
     case LOGIN_FAILURE:
     case RESET_PASSWORD_FAILURE:
-      return state.setIn(['form', 'isFetching'], false)
-      .setIn(['form', 'error'], action.payload)
+      return state.setIn(['formIm', 'isFetching'], false)
+      .setIn(['formIm', 'error'], action.payload)
 
     /**
      * ### Hot Loading support
@@ -154,11 +154,11 @@ export default function authReducer (state = initialState, action) {
     case SET_STATE:
       var form = JSON.parse(action.payload).auth.form
 
-      var next = state.setIn(['form', 'state'], form.state)
-          .setIn(['form', 'disabled'], form.disabled)
-          .setIn(['form', 'error'], form.error)
-          .setIn(['form', 'isValid'], form.isValid)
-          .setIn(['form', 'isFetching'], form.isFetching)
+      var next = state.setIn(['formIm', 'state'], form.state)
+          .setIn(['formIm', 'disabled'], form.disabled)
+          .setIn(['formIm', 'error'], form.error)
+          .setIn(['formIm', 'isValid'], form.isValid)
+          .setIn(['formIm', 'isFetching'], form.isFetching)
 
       return next
 

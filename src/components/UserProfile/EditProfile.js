@@ -10,7 +10,7 @@ import
   StyleSheet
 }
 from 'react-native'
-import { Field, reduxForm, initialize } from 'redux-form'
+import { Field, reduxForm, initialize } from 'redux-form/immutable'
 
 class renderMainField extends React.Component {
   render () {
