@@ -11,7 +11,7 @@ import
 }
 from 'react-native'
 
-import { Field, reduxForm, initialize } from 'redux-form/immutable'
+import { Field, reduxForm, initialize } from 'redux-form'
 
 class inputLogin extends React.Component {
   render () {
