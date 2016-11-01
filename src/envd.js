@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {
-    StyleSheet,
     View,
     Text } from 'react-native'
 import {
@@ -20,15 +19,12 @@ I18n.fallbacks = true
 I18n.Locale = 'ru'
 
 import App from './containers/App'
-import Login from './containers/Login'
+import LoginBox from './containers/LoginBox'
 import Logout from './containers/Logout'
-import Register from './containers/Register'
-import ForgotPassword from './containers/ForgotPassword'
 import Profile from './containers/Profile'
+import UserProfileBox from './containers/UserProfileBox'
 import EnvdBox from './containers/EnvdBox'
 import MyDrawer from './lib/MyDrawer'
-
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 import {setPlatform, setVersion, setCurrendTheme} from './reducers/device/deviceActions'
 import {setStore} from './reducers/global/globalActions'
@@ -55,18 +51,6 @@ function getInitialState () {
   return _initState
 }
 
-class TabIcon extends React.Component {
-  render () {
-    var color = this.props.selected ? 'black' : 'green'
-    return (
-      <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', alignSelf: 'center'}}>
-        <Icon style={{color: color}} name={this.props.iconName} size={30} />
-        <Text style={{color: color}}>{this.props.title}</Text>
-      </View>
-         )
-  }
-}
-
 class envd extends Component {
   render () {
     const store = configureStore(getInitialState())
@@ -80,6 +64,9 @@ class envd extends Component {
       <Provider store={store}>
         <Router>
           <Scene key='root'>
+            <Scene key='App' component={App} type='replace' hideNavBar initial />
+            <Scene key='UserProfileBox' component={UserProfileBox} />
+            <Scene key='LoginBox' type='replace' component={LoginBox} hideNavBar />
             <Scene key='drawer' component={MyDrawer} open={false} >
               <Scene key='Tabbar' tabs >
                 <Scene key='EnvdBox' component={EnvdBox} hideNavBar
@@ -88,11 +75,6 @@ class envd extends Component {
                 <Scene key='Logout'component={Logout} sceneStyle={{marginTop: 50}} />
               </Scene>
             </Scene>
-            <Scene key='App' component={App} type='replace' initial />
-            <Scene key='InitialLoginForm' component={Login} hideTabBar />
-            <Scene key='Login' component={Login} hideTabBar />
-            <Scene key='Register' component={Register} />
-            <Scene key='ForgotPassword' component={ForgotPassword} />
           </Scene>
         </Router>
       </Provider>
@@ -101,3 +83,20 @@ class envd extends Component {
 }
 
 export default envd
+
+// <Provider store={store}>
+//   <Router>
+//     <Scene key='root'>
+//       <Scene key='App' component={App} type='replace' initial />
+//       <Scene key='LoginBox' component={LoginBox} hideTabBar />
+//       <Scene key='drawer' component={MyDrawer} open={false} >
+//         <Scene key='Tabbar' tabs >
+//           <Scene key='EnvdBox' component={EnvdBox} hideNavBar
+//             titleStyle={{ color: 'white' }} />
+//           <Scene key='Profile' component={Profile} sceneStyle={{marginTop: 50}} />
+//           <Scene key='Logout'component={Logout} sceneStyle={{marginTop: 50}} />
+//         </Scene>
+//       </Scene>
+//     </Scene>
+//   </Router>
+// </Provider>

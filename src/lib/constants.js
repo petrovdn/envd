@@ -55,6 +55,10 @@ export default keyMirror({
   LOGIN: null,
   REGISTER: null,
 
+  EDITPROFILE: null,
+  MYPROFILE: null,
+  NOPROFILE: null,
+
   TASKLIST: null,
   TASKEDIT: null,
 

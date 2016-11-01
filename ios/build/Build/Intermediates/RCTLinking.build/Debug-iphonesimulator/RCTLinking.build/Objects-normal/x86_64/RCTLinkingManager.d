@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/LinkingIOS/RCTLinkingManager.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/LinkingIOS/RCTLinkingManager.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/LinkingIOS/RCTLinkingManager.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/LinkingIOS/RCTLinkingManager.h \
   ../../React/Modules/RCTEventEmitter.h ../../React/Base/RCTBridge.h \
   ../../React/Base/RCTBridgeDelegate.h \
   ../../React/Base/RCTJavaScriptLoader.h \

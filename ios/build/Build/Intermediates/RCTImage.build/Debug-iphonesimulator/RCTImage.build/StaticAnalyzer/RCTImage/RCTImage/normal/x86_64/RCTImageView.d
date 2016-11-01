@@ -1,7 +1,7 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Image/RCTImageView.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Image/RCTImageView.h \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Image/RCTResizeMode.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Image/RCTImageView.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Image/RCTImageView.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Image/RCTResizeMode.h \
   ../../React/Base/RCTConvert.h ../../React/CSSLayout/CSSLayout.h \
   ../../React/CSSLayout/CSSMacros.h ../../React/Views/RCTAnimationType.h \
   ../../React/Views/RCTBorderStyle.h \
@@ -13,11 +13,11 @@ dependencies: \
   ../../React/Base/RCTBridgeModule.h ../../React/Base/RCTFrameUpdate.h \
   ../../React/Base/RCTInvalidating.h \
   ../../React/Base/RCTEventDispatcher.h \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Image/RCTImageLoader.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Image/RCTImageLoader.h \
   ../../React/Base/RCTURLRequestHandler.h \
   ../../React/Base/RCTURLRequestDelegate.h \
   ../../React/Base/RCTImageSource.h \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Image/RCTImageUtils.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Image/RCTImageUtils.h \
   ../../React/Base/RCTUtils.h \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Image/RCTImageBlurUtils.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Image/RCTImageBlurUtils.h \
   ../../React/Views/UIView+React.h ../../React/Views/RCTComponent.h

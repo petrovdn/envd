@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTTextSelection.m \
-  /Users/petrovdn/envd/node_modules/react-native/Libraries/Text/RCTTextSelection.h \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTTextSelection.m \
+  /Users/petrov/envd/node_modules/react-native/Libraries/Text/RCTTextSelection.h \
   ../../React/Base/RCTConvert.h ../../React/CSSLayout/CSSLayout.h \
   ../../React/CSSLayout/CSSMacros.h ../../React/Views/RCTAnimationType.h \
   ../../React/Views/RCTBorderStyle.h \

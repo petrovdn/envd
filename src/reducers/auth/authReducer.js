@@ -1,22 +1,10 @@
-/**
- * # authReducer.js
- *
- * The reducer for all the actions from the various log states
- */
+
 'use strict'
-/**
- * ## Imports
- * The InitialState for auth
- * fieldValidation for validating the fields
- * formValidation for setting the form's valid flag
- */
+
 const InitialState = require('./authInitialState').default
 const fieldValidation = require('../../lib/fieldValidation').default
 const formValidation = require('./authFormValidation').default
 
-/**
- * ## Auth actions
- */
 const {
   SESSION_TOKEN_REQUEST,
   SESSION_TOKEN_SUCCESS,
@@ -51,11 +39,7 @@ const {
 } = require('../../lib/constants').default
 
 const initialState = new InitialState()
-/**
- * ## authReducer function
- * @param {Object} state - initialState
- * @param {Object} action - type and payload
- */
+
 export default function authReducer (state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.mergeDeep(state)
 
@@ -64,12 +48,22 @@ export default function authReducer (state = initialState, action) {
      * ### Requests start
      * set the form to fetching and clear any errors
      */
-    case SESSION_TOKEN_REQUEST:
-    case SIGNUP_REQUEST:
-    case LOGOUT_REQUEST:
     case LOGIN_REQUEST:
+      let nextState = state.setIn(['form', 'fields', 'password'], action.payload.password)
+                            .setIn(['form', 'fields', 'username'], action.payload.username)
+                            .setIn(['form', 'isFetching'], true)
+                            .setIn(['form', 'error'], null)
+      return nextState
+
+    case SIGNUP_REQUEST:
     case RESET_PASSWORD_REQUEST:
-      let nextState = state.setIn(['form', 'isFetching'], true)
+      nextState = state.setIn(['form', 'fields', 'username'], action.payload.username)
+                          .setIn(['form', 'isFetching'], true)
+                          .setIn(['form', 'error'], null)
+      return nextState
+    case LOGOUT_REQUEST:
+    case SESSION_TOKEN_REQUEST:
+      nextState = state.setIn(['form', 'isFetching'], true)
       .setIn(['form', 'error'], null)
       return nextState
 

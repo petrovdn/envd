@@ -1,19 +1,6 @@
-/**
- * # authActions.js
- *
- * All the request actions have 3 variations, the request, a success
- * and a failure. They all follow the pattern that the request will
- * set the ```isFetching``` to true and the whether it's successful or
- * fails, setting it back to false.
- *
- */
+
 'use strict'
 
-/**
- * ## Imports
- *
- * The actions supported
- */
 const {
   SESSION_TOKEN_REQUEST,
   SESSION_TOKEN_SUCCESS,
@@ -46,9 +33,7 @@ const {
 
 } = require('../../lib/constants').default
 
-/**
- * Project requirements
- */
+
 const BackendFactory = require('../../lib/BackendFactory').default
 
 import {Actions} from 'react-native-router-flux'
@@ -57,11 +42,7 @@ import {appAuthToken} from '../../lib/AppAuthToken'
 
 const _ = require('underscore')
 
-/**
- * ## State actions
- * controls which form is displayed to the user
- * as in login, register, logout or reset password
- */
+// actions для переключения между окнами блока регистрации (текущее состояние).
 
 export function logoutState () {
   return {
@@ -139,7 +120,7 @@ export function logout () {
       .catch((error) => {
         dispatch(loginState())
         dispatch(logoutFailure(error))
-        Actions.Login()
+        Actions.LoginBox()
       })
   }
 }
@@ -157,9 +138,10 @@ export function onAuthFormFieldChange (field, value) {
 /**
  * ## Signup actions
  */
-export function signupRequest () {
+export function signupRequest (username) {
   return {
-    type: SIGNUP_REQUEST
+    type: SIGNUP_REQUEST,
+    payload: username
   }
 }
 export function signupSuccess (json) {
@@ -241,14 +223,14 @@ export function getSessionToken () {
           Actions.drawer()
         } else {
           dispatch(sessionTokenRequestFailure())
-          Actions.InitialLoginForm()
+          Actions.LoginBox()
         }
       })
 
       .catch((error) => {
         dispatch(sessionTokenRequestFailure(error))
         dispatch(loginState())
-        Actions.InitialLoginForm()
+        Actions.LoginBox()
       })
   }
 }
@@ -272,7 +254,7 @@ export function saveSessionToken (json) {
  */
 export function signup (username) {
   return dispatch => {
-    dispatch(signupRequest())
+    dispatch(signupRequest(username))
     return BackendFactory().signup({
       login: username
     })
@@ -289,9 +271,13 @@ export function signup (username) {
 /**
  * ## Login actions
  */
-export function loginRequest () {
+export function loginRequest (username, password) {
   return {
-    type: LOGIN_REQUEST
+    type: LOGIN_REQUEST,
+    payload: {
+      username,
+      password
+    }
   }
 }
 
@@ -322,7 +308,7 @@ export function loginFailure (error) {
 
 export function login (username = '', password = '') {
   return dispatch => {
-    dispatch(loginRequest())
+    dispatch(loginRequest(username, password))
     return BackendFactory().login({
       login: username,
       password: password
@@ -348,7 +334,8 @@ export function login (username = '', password = '') {
 //  */
 // export function resetPasswordRequest () {
 //   return {
-//     type: RESET_PASSWORD_REQUEST
+//     type: RESET_PASSWORD_REQUEST,
+//     payload: username
 //   }
 // }
 //
@@ -378,7 +365,7 @@ export function login (username = '', password = '') {
  */
 // export function resetPassword (username) {
 //   return dispatch => {
-//     dispatch(resetPasswordRequest())
+//     dispatch(resetPasswordRequest(username))
 //     return BackendFactory().resetPassword({
 //       username: username
 //     })
