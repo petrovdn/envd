@@ -2,8 +2,8 @@
 'use strict'
 
 const InitialState = require('./authInitialState').default
-const fieldValidation = require('../../lib/fieldValidation').default
-const formValidation = require('./authFormValidation').default
+//const fieldValidation = require('../../lib/fieldValidation').default
+//const formValidation = require('./authFormValidation').default
 
 const {
   SESSION_TOKEN_REQUEST,
@@ -44,10 +44,9 @@ export default function authReducer (state = initialState, action) {
   if (!(state instanceof InitialState)) return initialState.mergeDeep(state)
 
   switch (action.type) {
-    /**
-     * ### Requests start
-     * set the form to fetching and clear any errors
-     */
+
+    // при отправке запроса форма очищается от любых ошибок
+    // isFetcing устанавливается в true (для отображения индикаторов загрузки)
     case LOGIN_REQUEST:
       let nextState = state.setIn(['formIm', 'fields', 'password'], action.payload.password)
                             .setIn(['formIm', 'fields', 'username'], action.payload.username)
@@ -61,37 +60,22 @@ export default function authReducer (state = initialState, action) {
                           .setIn(['formIm', 'isFetching'], true)
                           .setIn(['formIm', 'error'], null)
       return nextState
+
     case LOGOUT_REQUEST:
     case SESSION_TOKEN_REQUEST:
       nextState = state.setIn(['formIm', 'isFetching'], true)
       .setIn(['formIm', 'error'], null)
       return nextState
 
-    /**
-     * ### Logout state
-     * The logged in user logs out
-     * Clear the form's error and all the fields
-     */
+// управление навигцией внутри блоков (боксов). state задает вид отображаемой сцены
+// (навигация между блоками производится прямым переключением сцен react-native-router-flux
     case LOGOUT:
-      return formValidation(
-      state.setIn(['formIm', 'state'], action.type)
-        .setIn(['formIm', 'error'], null)
-    )
-
-    /**
-     * ### Loggin in state
-     * The user isn't logged in, and needs to
-     * login, register or reset password
-     *
-     * Set the form state and clear any errors
-     */
     case LOGIN:
     case REGISTER:
     case FORGOT_PASSWORD:
-      return formValidation(
-      state.setIn(['formIm', 'state'], action.type)
+      nextState = state.setIn(['formIm', 'state'], action.type)
         .setIn(['formIm', 'error'], null)
-    )
+      return nextState
 
     /**
      * ### Auth form field change

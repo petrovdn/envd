@@ -118,8 +118,8 @@ export function logout () {
         Actions.Drawer()
       })
       .catch((error) => {
-        dispatch(loginState())
         dispatch(logoutFailure(error))
+        dispatch(loginState())
         Actions.LoginBox()
       })
   }
