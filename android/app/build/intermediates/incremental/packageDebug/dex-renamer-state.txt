@@ -1,4 +1,7 @@
-#Fri Oct 28 17:28:24 MSK 2016
-base.0=/Users/petrov/envd/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
-renamed.0=classes.dex
-file.0=/Users/petrov/envd/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+#Tue Nov 01 17:24:51 MSK 2016
+base.0=/Users/petrov/envd/android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_54d57e3412f994a048868bdeb23274b14f9576b2
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/petrov/envd/android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_e4ac98567ef91016d50242f852a569db18841741/classes.dex
+base.1=/Users/petrov/envd/android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_e4ac98567ef91016d50242f852a569db18841741
+file.0=/Users/petrov/envd/android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_54d57e3412f994a048868bdeb23274b14f9576b2/classes.dex

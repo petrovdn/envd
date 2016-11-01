@@ -28,12 +28,12 @@
         "source": "/Users/petrov/envd/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/Users/petrov/envd/android/app/build/intermediates/res/merged/debug/layout/redbox_item_frame.xml",
-        "source": "/Users/petrov/envd/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.34.1/res/layout/redbox_item_frame.xml"
-    },
-    {
         "merged": "/Users/petrov/envd/android/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
         "source": "/Users/petrov/envd/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/petrov/envd/android/app/build/intermediates/res/merged/debug/layout/redbox_item_frame.xml",
+        "source": "/Users/petrov/envd/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.34.1/res/layout/redbox_item_frame.xml"
     },
     {
         "merged": "/Users/petrov/envd/android/app/build/intermediates/res/merged/debug/layout/redbox_item_title.xml",
