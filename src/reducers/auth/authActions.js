@@ -217,17 +217,18 @@ export function getSessionToken () {
     return appAuthToken.getSessionToken()
 
       .then((token) => {
+        console.log(token)
         if (token) {
-          dispatch(sessionTokenRequestSuccess(token))
           dispatch(logoutState())
           Actions.drawer()
         } else {
-          dispatch(sessionTokenRequestFailure())
+          dispatch(loginState())
           Actions.LoginBox()
         }
       })
 
       .catch((error) => {
+        console.error(error)
         dispatch(sessionTokenRequestFailure(error))
         dispatch(loginState())
         Actions.LoginBox()

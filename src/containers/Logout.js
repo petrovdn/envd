@@ -102,7 +102,7 @@ class Logout extends Component {
             onSetState={this.props.actions.setState} />
 
           <FormButton
-            isDisabled={!this.props.auth.form.isValid || this.props.auth.form.isFetching}
+            isDisabled={false}
             onPress={onButtonPress.bind(self)}
             buttonText={I18n.t('cactus.logout')} />
         </View>

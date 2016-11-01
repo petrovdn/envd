@@ -11,8 +11,6 @@
  * formValidation for setting the form's valid flag
  */
 const InitialState = require('./envdboxInitialState').default
-const fieldValidation = require('../../lib/fieldValidation').default
-const formValidation = require('./envdboxFormValidation').default
 
 /**
  * ## Auth actions
@@ -66,6 +64,7 @@ export default function envdboxReducer (state = initialState, action) {
 
   switch (action.type) {
 
+   // Навигация внутри блока, навигация между блоками выполняется при помощи router-flux
     case ENVDLIST:
     case STEP1:
     case STEP2:
@@ -75,54 +74,53 @@ export default function envdboxReducer (state = initialState, action) {
     case STEP6:
     case STEP7:
     case STEP8:
-      return state.setIn(['form', 'state'], action.type)
-        .setIn(['form', 'error'], null)
+      return state.setIn(['formIm', 'state'], action.type)
+        .setIn(['formIm', 'error'], null)
 
     case ADD_STEP1_DATA:
-      return state.setIn(['form', 'fields', 'inn'], action.payload.inn)
-      .setIn(['form', 'fields', 'lastName'], action.payload.lastName)
-      .setIn(['form', 'fields', 'name'], action.payload.name)
-      .setIn(['form', 'fields', 'patronymic'], action.payload.patronymic)
-      .setIn(['form', 'fields', 'okved'], action.payload.okved)
-        .setIn(['form', 'error'], null)
+      return state.setIn(['formIm', 'fields', 'inn'], action.payload.inn)
+      .setIn(['formIm', 'fields', 'lastName'], action.payload.lastName)
+      .setIn(['formIm', 'fields', 'name'], action.payload.name)
+      .setIn(['formIm', 'fields', 'patronymic'], action.payload.patronymic)
+      .setIn(['formIm', 'fields', 'okved'], action.payload.okved)
+        .setIn(['formIm', 'error'], null)
     case ADD_STEP3_DATA:
-      return state.setIn(['form', 'fields', 'activityType'], action.payload.activityType)
-      .setIn(['form', 'fields', 'taxBase'], action.payload.taxBase)
-        .setIn(['form', 'error'], null)
+      return state.setIn(['formIm', 'fields', 'activityType'], action.payload.activityType)
+      .setIn(['formIm', 'fields', 'taxBase'], action.payload.taxBase)
+        .setIn(['formIm', 'error'], null)
 
     case ADD_STEP4_DATA:
-      return state.setIn(['form', 'fields', 'address', 'city'], action.payload.city)
-      .setIn(['form', 'fields', 'address', 'street'], action.payload.street)
-      .setIn(['form', 'fields', 'address', 'house'], action.payload.house)
-      .setIn(['form', 'fields', 'address', 'building'], action.payload.building)
-      .setIn(['form', 'fields', 'address', 'flat'], action.payload.flat)
-        .setIn(['form', 'error'], null)
+      return state.setIn(['formIm', 'fields', 'address', 'city'], action.payload.city)
+      .setIn(['formIm', 'fields', 'address', 'street'], action.payload.street)
+      .setIn(['formIm', 'fields', 'address', 'house'], action.payload.house)
+      .setIn(['formIm', 'fields', 'address', 'building'], action.payload.building)
+      .setIn(['formIm', 'fields', 'address', 'flat'], action.payload.flat)
+        .setIn(['formIm', 'error'], null)
 
     case ADD_STEP5_DATA:
       var factors = [action.payload.data.factor1, action.payload.data.factor2, action.payload.data.factor3]
-      return state.setIn(['form', 'fields', 'factors'], factors)
-          .setIn(['form', 'fields', 'k2'], action.payload.data.k2)
-          .setIn(['form', 'fields', 'taxRate'], action.payload.data.taxRate)
-          .setIn(['form', 'fields', 'taxBeforeInsurance'], action.payload.tax)
-          .setIn(['form', 'error'], null)
+      return state.setIn(['formIm', 'fields', 'factors'], factors)
+          .setIn(['formIm', 'fields', 'k2'], action.payload.data.k2)
+          .setIn(['formIm', 'fields', 'taxRate'], action.payload.data.taxRate)
+          .setIn(['formIm', 'fields', 'taxBeforeInsurance'], action.payload.tax)
+          .setIn(['formIm', 'error'], null)
 
     case ADD_STEP6_DATA:
       return state
-        .setIn(['form', 'fields', 'insurancePayments'], action.payload.insurancePayments)
-          .setIn(['form', 'fields', 'taxDecrease'], action.payload.taxDecrease)
-          .setIn(['form', 'fields', 'taxToPay'], action.payload.taxToPay)
-          .setIn(['form', 'error'], null)
+        .setIn(['formIm', 'fields', 'insurancePayments'], action.payload.insurancePayments)
+          .setIn(['formIm', 'fields', 'taxDecrease'], action.payload.taxDecrease)
+          .setIn(['formIm', 'fields', 'taxToPay'], action.payload.taxToPay)
+          .setIn(['formIm', 'error'], null)
 
     case ENVDLIST_REQUEST:
     case GETENVD_REQUEST:
-      let nextState = state.setIn(['form', 'isFetching'], true)
-      .setIn(['form', 'error'], null)
+      let nextState = state.setIn(['formIm', 'isFetching'], true)
+      .setIn(['formIm', 'error'], null)
       return nextState
 
     case ENVDLIST_SUCCESS:
       let envdlist = []
       for (var i = 0; i < action.payload.length; i++) {
-
         var data = action.payload[i].data
         var parse = JSON.parse(data)
         let envdRow = []
@@ -132,33 +130,33 @@ export default function envdboxReducer (state = initialState, action) {
         envdRow[3] = parse.userData.activityType
         envdlist.push(envdRow)
       }
-      return state.setIn(['form', 'envdlist'], envdlist)
-        .setIn(['form', 'isFetching'], false)
+      return state.setIn(['formIm', 'envdlist'], envdlist)
+        .setIn(['formIm', 'isFetching'], false)
 
     case GETENVD_SUCCESS:
       return state
-    .setIn(['form', 'fields', 'id'], action.payload.data.id)
-    .setIn(['form', 'fields', 'year'], action.payload.data.year)
-    .setIn(['form', 'fields', 'quarter'], action.payload.data.quarter)
-    .setIn(['form', 'fields', 'k1'], action.payload.k1)
-    .setIn(['form', 'error'], null)
+    .setIn(['formIm', 'fields', 'id'], action.payload.data.id)
+    .setIn(['formIm', 'fields', 'year'], action.payload.data.year)
+    .setIn(['formIm', 'fields', 'quarter'], action.payload.data.quarter)
+    .setIn(['formIm', 'fields', 'k1'], action.payload.k1)
+    .setIn(['formIm', 'error'], null)
 
     case ENVDLIST_FAILURE:
     case GETENVD_FAILURE:
-      return state.setIn(['form', 'isFetching'], false)
-      .setIn(['form', 'error'], action.payload)
+      return state.setIn(['formIm', 'isFetching'], false)
+      .setIn(['formIm', 'error'], action.payload)
 
     case ACTIVITY_LIST_REQUEST:
-      return state.setIn(['form', 'isFetching'], true)
-        .setIn(['form', 'error'], null)
+      return state.setIn(['formIm', 'isFetching'], true)
+        .setIn(['formIm', 'error'], null)
 
     case ACTIVITY_LIST_SUCCESS:
-      return state.setIn(['form', 'Activitylist'], action.payload)
-          .setIn(['form', 'isFetching'], false)
+      return state.setIn(['formIm', 'Activitylist'], action.payload)
+          .setIn(['formIm', 'isFetching'], false)
 
     case ACTIVITY_LIST_FAILURE:
-      return state.setIn(['form', 'isFetching'], false)
-      .setIn(['form', 'error'], action.payload)
+      return state.setIn(['formIm', 'isFetching'], false)
+      .setIn(['formIm', 'error'], action.payload)
   }// switch
   /**
   * # Default

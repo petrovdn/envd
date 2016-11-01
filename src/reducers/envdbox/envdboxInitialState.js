@@ -55,7 +55,7 @@ const Form = Record({
  * The form is set
  */
 var InitialState = Record({
-  form: new Form()
+  formIm: new Form()
 })
 
 export default InitialState

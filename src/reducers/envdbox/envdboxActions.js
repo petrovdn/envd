@@ -1,13 +1,3 @@
-/**
- * # taskboxActions.js
- *
- * All the request actions have 3 variations, the request, a success
- * and a failure. They all follow the pattern that the request will
- * set the ```isFetching``` to true and the whether it's successful or
- * fails, setting it back to false.
- *
- */
-'use strict'
 
 const {
 ENVDLIST,
@@ -53,13 +43,6 @@ ACTIVITY_LIST_FAILURE
 
 const BackendFactory = require('../../lib/BackendFactory').default
 import {appAuthToken} from '../../lib/AppAuthToken'
-import {Actions} from 'react-native-router-flux'
-
-/**
- * ## State actions
- * controls which form is displayed to the user
- * as in envdlist, envdedit
- */
 
 export function envdlistState () {
   return {
@@ -341,7 +324,6 @@ export function getActivitylist (sessionToken) {
     }, 1000)
   }
 }
-
 
 export function initializeServer (sessionToken) {
   return dispatch => {

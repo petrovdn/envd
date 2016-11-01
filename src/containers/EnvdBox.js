@@ -34,44 +34,44 @@ import Step8 from '../components/envd/Step8'
 function mapStateToProps (state) {
   return {
     envdbox: {
-      form: {
-        state: state.envdbox.form.state,
-        envdlist: state.envdbox.form.envdlist,
-        Activitylist: state.envdbox.form.Activitylist,
-        disabled: state.envdbox.form.disabled,
-        error: state.envdbox.form.error,
-        isValid: state.envdbox.form.isValid,
-        isFetching: state.envdbox.form.isFetching,
-        isChanged: state.envdbox.form.isChanged,
+      formIm: {
+        state: state.envdbox.formIm.state,
+        envdlist: state.envdbox.formIm.envdlist,
+        Activitylist: state.envdbox.formIm.Activitylist,
+        disabled: state.envdbox.formIm.disabled,
+        error: state.envdbox.formIm.error,
+        isValid: state.envdbox.formIm.isValid,
+        isFetching: state.envdbox.formIm.isFetching,
+        isChanged: state.envdbox.formIm.isChanged,
         fields: {
-          inn: state.envdbox.form.fields.inn,
-          year: state.envdbox.form.fields.year,
-          name: state.envdbox.form.fields.name,
-          lastName: state.envdbox.form.fields.lastName,
-          patronymic: state.envdbox.form.fields.patronymic,
+          inn: state.envdbox.formIm.fields.inn,
+          year: state.envdbox.formIm.fields.year,
+          name: state.envdbox.formIm.fields.name,
+          lastName: state.envdbox.formIm.fields.lastName,
+          patronymic: state.envdbox.formIm.fields.patronymic,
           address: {
-            subjectCode: state.envdbox.form.fields.address.subjectCode,
-            index: state.envdbox.form.fields.address.index,
-            district: state.envdbox.form.fields.address.district,
-            city: state.envdbox.form.fields.address.city,
-            town: state.envdbox.form.fields.address.town,
-            street: state.envdbox.form.fields.address.street,
-            house: state.envdbox.form.fields.address.house,
-            building: state.envdbox.form.fields.address.building,
-            flat: state.envdbox.form.fields.address.flat
+            subjectCode: state.envdbox.formIm.fields.address.subjectCode,
+            index: state.envdbox.formIm.fields.address.index,
+            district: state.envdbox.formIm.fields.address.district,
+            city: state.envdbox.formIm.fields.address.city,
+            town: state.envdbox.formIm.fields.address.town,
+            street: state.envdbox.formIm.fields.address.street,
+            house: state.envdbox.formIm.fields.address.house,
+            building: state.envdbox.formIm.fields.address.building,
+            flat: state.envdbox.formIm.fields.address.flat
           },
-          ifns: state.envdbox.form.fields.ifns,
-          okved: state.envdbox.form.fields.okved,
-          activityType: state.envdbox.form.fields.activityType,
-          quarter: state.envdbox.form.fields.quarter,
-          k2: state.envdbox.form.fields.k2,
-          factors: state.envdbox.form.fields.factors,
-          taxBase: state.envdbox.form.fields.taxBase,
-          taxRate: state.envdbox.form.fields.taxRate,
-          insurancePayments: state.envdbox.form.fields.insurancePayments,
-          taxDecrease: state.envdbox.form.fields.taxDecrease,
-          taxBeforeInsurance: state.envdbox.form.fields.taxBeforeInsurance,
-          taxToPay: state.envdbox.form.fields.taxToPay
+          ifns: state.envdbox.formIm.fields.ifns,
+          okved: state.envdbox.formIm.fields.okved,
+          activityType: state.envdbox.formIm.fields.activityType,
+          quarter: state.envdbox.formIm.fields.quarter,
+          k2: state.envdbox.formIm.fields.k2,
+          factors: state.envdbox.formIm.fields.factors,
+          taxBase: state.envdbox.formIm.fields.taxBase,
+          taxRate: state.envdbox.formIm.fields.taxRate,
+          insurancePayments: state.envdbox.formIm.fields.insurancePayments,
+          taxDecrease: state.envdbox.formIm.fields.taxDecrease,
+          taxBeforeInsurance: state.envdbox.formIm.fields.taxBeforeInsurance,
+          taxToPay: state.envdbox.formIm.fields.taxToPay
         }
       }
     },
@@ -201,7 +201,7 @@ _getTitle () {
   }
 
   render () {
-    switch (this.props.envdbox.form.state) {
+    switch (this.props.envdbox.formIm.state) {
       case 'ENVDLIST':
         return (
           <View style={styles.container}>
@@ -219,7 +219,7 @@ _getTitle () {
               }} />
             <EnvdList
               theme={this.props.device.theme}
-              envdlist={this.props.envdbox.form.envdlist}
+              envdlist={this.props.envdbox.formIm.envdlist}
               editEnvd={this.editEnvd.bind(this)}
               handleSideMenu={this.handleSideMenu.bind(this)}
             />
@@ -235,11 +235,11 @@ _getTitle () {
           <View style={styles.container}>
             <Step1
               theme={this.props.device.theme}
-              inn={this.props.envdbox.form.fields.inn}
-              name={this.props.envdbox.form.fields.name}
-              lastName={this.props.envdbox.form.fields.lastName}
-              patronymic={this.props.envdbox.form.fields.patronymic}
-              okved={this.props.envdbox.form.fields.okved}
+              inn={this.props.envdbox.formIm.fields.inn}
+              name={this.props.envdbox.formIm.fields.name}
+              lastName={this.props.envdbox.formIm.fields.lastName}
+              patronymic={this.props.envdbox.formIm.fields.patronymic}
+              okved={this.props.envdbox.formIm.fields.okved}
               handleSteps={this.handleSteps.bind(this)} />
           </View>
         )
@@ -249,8 +249,8 @@ _getTitle () {
             <Step2
               theme={this.props.device.theme}
               handleSteps={this.handleSteps.bind(this)}
-              year={this.props.envdbox.form.fields.year}
-              quarter={this.props.envdbox.form.fields.quarter} />
+              year={this.props.envdbox.formIm.fields.year}
+              quarter={this.props.envdbox.formIm.fields.quarter} />
           </View>
         )
       case 'STEP3':
@@ -259,9 +259,9 @@ _getTitle () {
             <Step3
               theme={this.props.device.theme}
               handleSteps={this.handleSteps.bind(this)}
-              Activitylist={this.props.envdbox.form.Activitylist}
-              activityType={this.props.envdbox.form.fields.activityType}
-              taxBase={this.props.envdbox.form.fields.taxBase}
+              Activitylist={this.props.envdbox.formIm.Activitylist}
+              activityType={this.props.envdbox.formIm.fields.activityType}
+              taxBase={this.props.envdbox.formIm.fields.taxBase}
               />
           </View>
         )
@@ -271,11 +271,11 @@ _getTitle () {
             <Step4
               theme={this.props.device.theme}
               handleSteps={this.handleSteps.bind(this)}
-              city={this.props.envdbox.form.fields.address.city}
-              street={this.props.envdbox.form.fields.address.street}
-              house={this.props.envdbox.form.fields.address.house}
-              building={this.props.envdbox.form.fields.address.building}
-              flat={this.props.envdbox.form.fields.address.flat} />
+              city={this.props.envdbox.formIm.fields.address.city}
+              street={this.props.envdbox.formIm.fields.address.street}
+              house={this.props.envdbox.formIm.fields.address.house}
+              building={this.props.envdbox.formIm.fields.address.building}
+              flat={this.props.envdbox.formIm.fields.address.flat} />
           </View>
         )
       case 'STEP5':
@@ -284,14 +284,14 @@ _getTitle () {
             <Step5
               theme={this.props.device.theme}
               handleSteps={this.handleSteps.bind(this)}
-              quarter={this.props.envdbox.form.fields.quarter}
-              taxBase={this.props.envdbox.form.fields.taxBase}
-              taxRate={this.props.envdbox.form.fields.taxRate}
-              factor1={this.props.envdbox.form.fields.factors[0]}
-              factor2={this.props.envdbox.form.fields.factors[1]}
-              factor3={this.props.envdbox.form.fields.factors[2]}
-              k2={this.props.envdbox.form.fields.k2}
-              taxBeforeInsurance={this.props.envdbox.form.fields.taxBeforeInsurance}
+              quarter={this.props.envdbox.formIm.fields.quarter}
+              taxBase={this.props.envdbox.formIm.fields.taxBase}
+              taxRate={this.props.envdbox.formIm.fields.taxRate}
+              factor1={this.props.envdbox.formIm.fields.factors[0]}
+              factor2={this.props.envdbox.formIm.fields.factors[1]}
+              factor3={this.props.envdbox.formIm.fields.factors[2]}
+              k2={this.props.envdbox.formIm.fields.k2}
+              taxBeforeInsurance={this.props.envdbox.formIm.fields.taxBeforeInsurance}
                />
           </View>
         )
@@ -301,12 +301,12 @@ _getTitle () {
             <Step6
               theme={this.props.device.theme}
               handleSteps={this.handleSteps.bind(this)}
-              taxBeforeInsurance={this.props.envdbox.form.fields.taxBeforeInsurance}
-              insurancePayments={this.props.envdbox.form.fields.insurancePayments}
-              taxDecrease={this.props.envdbox.form.fields.taxDecrease}
-              taxToPay={this.props.envdbox.form.fields.taxToPay}
-              year={this.props.envdbox.form.fields.year}
-              quarter={this.props.envdbox.form.fields.quarter}
+              taxBeforeInsurance={this.props.envdbox.formIm.fields.taxBeforeInsurance}
+              insurancePayments={this.props.envdbox.formIm.fields.insurancePayments}
+              taxDecrease={this.props.envdbox.formIm.fields.taxDecrease}
+              taxToPay={this.props.envdbox.formIm.fields.taxToPay}
+              year={this.props.envdbox.formIm.fields.year}
+              quarter={this.props.envdbox.formIm.fields.quarter}
               />
           </View>
         )

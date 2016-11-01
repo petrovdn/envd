@@ -15,7 +15,6 @@ export default keyMirror({
   ON_LOGIN_STATE_CHANGE: null,
   LOGOUT: null,
 
-  ON_AUTH_FORM_FIELD_CHANGE: null,
   SIGNUP_REQUEST: null,
   SIGNUP_SUCCESS: null,
   SIGNUP_FAILURE: null,
