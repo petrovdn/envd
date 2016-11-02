@@ -215,26 +215,25 @@ export function getSessionToken () {
   return dispatch => {
     dispatch(sessionTokenRequest())
     return appAuthToken.getSessionToken()
-
-      .then((token) => {
-        console.log(token)
-        if (token) {
-          dispatch(logoutState())
-          Actions.drawer()
-        } else {
-          dispatch(loginState())
-          Actions.LoginBox()
-        }
-      })
-
-      .catch((error) => {
-        console.error(error)
-        dispatch(sessionTokenRequestFailure(error))
-        dispatch(loginState())
-        Actions.LoginBox()
-      })
-  }
-}
+       .then((token) => {
+         sessionTokenRequestSuccess(token)
+         console.log(token)
+         if (token) {
+           Actions.LoginBox()
+           //Actions.drawer()
+         } else {
+           dispatch(loginState())
+           Actions.LoginBox()
+         }
+       })
+       .catch((error) => {
+         console.error(error)
+         dispatch(sessionTokenRequestFailure(error))
+         dispatch(loginState())
+         Actions.LoginBox()
+       })
+   }
+ }
 
 /**
  * ## saveSessionToken
@@ -314,14 +313,12 @@ export function login (username = '', password = '') {
       login: username,
       password: password
     })
-
       .then(function (json) {
         return saveSessionToken(json.token)
           .then(function () {
             dispatch(loginSuccess(json.token))
             // navigate to Tabbar
             Actions.drawer()
-            dispatch(logoutState())
           })
       })
       .catch((error) => {
